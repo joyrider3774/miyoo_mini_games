@@ -1,0 +1,91 @@
+# Controls when the workflow will run
+on:
+  # Allows you to run this workflow manually ftarget the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: ${{ matrix.output }}
+    strategy:
+      matrix:
+        include:       
+          - { buildtype: 'vanilla',  repo: 'joyrider3774/blips',            branch: 'SDL1_version', output: 'Blips',     binarycopy: 'blips',     assetscopy: 'fonts sound levelpacks graphics music', downloadsecret: '', downloadsecretcmd: '', codesecret: '', codesecretfile: '', makecommand: 'CC=/opt/miyoomini-toolchain/bin/arm-linux-gnueabihf-gcc CPP=/opt/miyoomini-toolchain/bin/arm-linux-gnueabihf-g++ SDL_CONFIG=/opt/miyoomini-toolchain/arm-linux-gnueabihf/sysroot/usr/bin/sdl-config NOX11=1 DEFINES="-DMIYOO=1"'}
+          - { buildtype: 'vanilla',  repo: 'joyrider3774/Sokoban',          branch: 'SDL1_version', output: 'Sokoban',   binarycopy: 'sokoban',   assetscopy: 'fonts sound levelpacks graphics music', downloadsecret: '', downloadsecretcmd: '', codesecret: '', codesecretfile: '', makecommand: 'CC=/opt/miyoomini-toolchain/bin/arm-linux-gnueabihf-gcc CPP=/opt/miyoomini-toolchain/bin/arm-linux-gnueabihf-g++ SDL_CONFIG=/opt/miyoomini-toolchain/arm-linux-gnueabihf/sysroot/usr/bin/sdl-config NOX11=1 DEFINES="-DMIYOO=1"'}
+          - { buildtype: 'vanilla',  repo: 'joyrider3774/znax_sdl1',        branch: 'main',         output: 'Znax',      binarycopy: 'znax',      assetscopy: 'fonts sound graphics music',            downloadsecret: '', downloadsecretcmd: '', codesecret: '', codesecretfile: '', 'CC=/opt/miyoomini-toolchain/bin/arm-linux-gnueabihf-gcc CPP=/opt/miyoomini-toolchain/bin/arm-linux-gnueabihf-g++ SDL_CONFIG=/opt/miyoomini-toolchain/arm-linux-gnueabihf/sysroot/usr/bin/sdl-config NOX11=1 DEFINES="-DMIYOO=1"'}
+          - { buildtype: 'vanilla',  repo: 'joyrider3774/rubido_funkey',    branch: 'main',         output: 'Rubido',    binarycopy: 'rubido',    assetscopy: 'rubidofs',                              downloadsecret: '', downloadsecretcmd: '', codesecret: '', codesecretfile: '', makecommand: 'TARGET=miyoo'}         
+          - { buildtype: 'vanilla',  repo: 'joyrider3774/blockdude_funkey', branch: 'main',         output: 'Blockdude', binarycopy: 'blockdude', assetscopy: 'blockdudefs',                           downloadsecret: '', downloadsecretcmd: '', codesecret: '', codesecretfile: '', makecommand: 'TARGET=miyoo'}         
+          - { buildtype: 'vanilla',  repo: 'joyrider3774/formula1_funkey',  branch: 'main',         output: 'Formula1',  binarycopy: 'formula1',  assetscopy: 'filesystem',                            downloadsecret: '', downloadsecretcmd: '', codesecret: '', codesecretfile: '', makecommand: 'TARGET=miyoo'}                   
+    
+    runs-on: ubuntu-latest
+    steps:
+      - name: get SDK
+        uses: wei/wget@v1
+        with:
+          args: -O trimui-sdk.tar.gz https://github.com/joyrider3774/sdks/releases/latest/download/miyoomini-toolchain.tar.gz
+          
+      - name: setup SDK
+        run: |
+          tar -xzvf ./miyoomini-toolchain.tar.gz
+          sudo mv ./miyoomini-toolchain /opt/
+
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        
+      - name: Checkout game sources sources
+        uses: actions/checkout@v4
+        with:
+          submodules: 'true'
+          repository: ${{matrix.repo}}
+          path: tmp
+          ref: ${{matrix.branch}}
+     
+      - if: ${{ (matrix.codesecret != '') && (matrix.codesecretfile != '')}}
+        name: Setup Secret codekey.h File
+        env: 
+          SECRET: ${{secrets[matrix.codesecret] }}
+        run : |
+          echo "$SECRET" | base64 --decode >  tmp/${{matrix.codesecretfile}}
+       
+      - if: ${{ (matrix.downloadsecret != '') && (matrix.downloadsecretcmd != '')}}
+        name: run secret download
+        uses: wei/wget@v1
+        with:
+          args: -O download ${{ secrets[matrix.downloadsecret] }}
+      
+      - if: ${{ (matrix.downloadsecret != '') && (matrix.downloadsecretcmd != '')}}
+        name: run secret download cmd
+        run: |
+          ${{matrix.downloadsecretcmd}}
+          rm download
+       
+      - if: ${{ matrix.buildtype == 'vanilla'}}   
+        name: Build Game Vanilla
+        run: |
+          cd tmp
+          make ${{matrix.makecommand }}
+          
+      - name: prepare artificat directory
+        run: |
+          mkdir artifact_dir
+          mkdir artifact_dir/Roms
+          mkdir artifact_dir/Roms/PORTS
+          mkdir artifact_dir/Roms/PORTS/Games
+          mkdir artifact_dir/Roms/PORTS/Games/${{ matrix.output }}
+     
+      - if: ${{ matrix.binarycopy != ''}}
+        name: copy binary
+        run: |
+          cp "tmp/${{ matrix.binarycopy}}" "./artifact_dir/Roms/PORTS/Games/${{ matrix.output }}/${{ matrix.binarycopy }}"
+      
+      - if: ${{ matrix.assetscopy != ''}}
+        name: copy assets
+        run: |
+          for dir in ${{ matrix.assetscopy}}; do cp -Rf "tmp/$dir" "./artifact_dir/Roms/PORTS/Games/${{ matrix.output }}"; done 
+          for dir in imgs Shortcuts; do cp -Rf "tmp/metadata/miyoo/$dir" "./artifact_dir/Roms/PORTS"; done  cp 
+          cp -Rf lib "./artifact_dir/Roms/PORTS/Games/${{ matrix.output }}"
+          
+      - name: Store build
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.output }} - Miyoo_Mini_Onion_Os
+          path: artifact_dir/
