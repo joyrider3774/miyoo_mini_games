@@ -21,7 +21,7 @@ jobs:
       - name: get SDK
         uses: wei/wget@v1
         with:
-          args: -O trimui-sdk.tar.gz https://github.com/joyrider3774/sdks/releases/latest/download/miyoomini-toolchain.tar.gz
+          args: -O miyoomini-toolchain.tar.gz https://github.com/joyrider3774/sdks/releases/latest/download/miyoomini-toolchain.tar.gz
           
       - name: setup SDK
         run: |
