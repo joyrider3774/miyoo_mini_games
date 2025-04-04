@@ -41,6 +41,7 @@ jobs:
       - name: Switch game sources branch
         run: |
           cd tmp
+          git fetch origin
           git checkout -b build origin/${{matrix.branch}}
      
       - if: ${{ (matrix.codesecret != '') && (matrix.codesecretfile != '')}}
