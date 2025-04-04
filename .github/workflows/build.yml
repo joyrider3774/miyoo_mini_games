@@ -37,7 +37,11 @@ jobs:
           submodules: 'true'
           repository: ${{matrix.repo}}
           path: tmp
-          ref: ${{matrix.branch}}
+          
+      - name: Switch game sources branch
+        run: |
+          cd tmp
+          git checkout ${{matrix.branch}}
      
       - if: ${{ (matrix.codesecret != '') && (matrix.codesecretfile != '')}}
         name: Setup Secret codekey.h File
