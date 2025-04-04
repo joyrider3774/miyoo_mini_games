@@ -9,8 +9,8 @@ jobs:
     strategy:
       matrix:
         include:       
-          - { buildtype: 'vanilla',  repo: 'joyrider3774/blips',            branch: 'SDL1_version', output: 'Blips',     binarycopy: 'blips',     assetscopy: 'fonts sound levelpacks graphics music', downloadsecret: '', downloadsecretcmd: '', codesecret: '', codesecretfile: '', makecommand: 'CC=/opt/miyoomini-toolchain/bin/arm-linux-gnueabihf-gcc CPP=/opt/miyoomini-toolchain/bin/arm-linux-gnueabihf-g++ SDL_CONFIG=/opt/miyoomini-toolchain/arm-linux-gnueabihf/sysroot/usr/bin/sdl-config NOX11=1 DEFINES="-DMIYOO=1"'}
-          - { buildtype: 'vanilla',  repo: 'joyrider3774/Sokoban',          branch: 'SDL1_version', output: 'Sokoban',   binarycopy: 'sokoban',   assetscopy: 'fonts sound levelpacks graphics music', downloadsecret: '', downloadsecretcmd: '', codesecret: '', codesecretfile: '', makecommand: 'CC=/opt/miyoomini-toolchain/bin/arm-linux-gnueabihf-gcc CPP=/opt/miyoomini-toolchain/bin/arm-linux-gnueabihf-g++ SDL_CONFIG=/opt/miyoomini-toolchain/arm-linux-gnueabihf/sysroot/usr/bin/sdl-config NOX11=1 DEFINES="-DMIYOO=1"'}
+          - { buildtype: 'vanilla',  repo: 'joyrider3774/blips',            branch: 'SDL1_Version', output: 'Blips',     binarycopy: 'blips',     assetscopy: 'fonts sound levelpacks graphics music', downloadsecret: '', downloadsecretcmd: '', codesecret: '', codesecretfile: '', makecommand: 'CC=/opt/miyoomini-toolchain/bin/arm-linux-gnueabihf-gcc CPP=/opt/miyoomini-toolchain/bin/arm-linux-gnueabihf-g++ SDL_CONFIG=/opt/miyoomini-toolchain/arm-linux-gnueabihf/sysroot/usr/bin/sdl-config NOX11=1 DEFINES="-DMIYOO=1"'}
+          - { buildtype: 'vanilla',  repo: 'joyrider3774/Sokoban',          branch: 'SDL1_Version', output: 'Sokoban',   binarycopy: 'sokoban',   assetscopy: 'fonts sound levelpacks graphics music', downloadsecret: '', downloadsecretcmd: '', codesecret: '', codesecretfile: '', makecommand: 'CC=/opt/miyoomini-toolchain/bin/arm-linux-gnueabihf-gcc CPP=/opt/miyoomini-toolchain/bin/arm-linux-gnueabihf-g++ SDL_CONFIG=/opt/miyoomini-toolchain/arm-linux-gnueabihf/sysroot/usr/bin/sdl-config NOX11=1 DEFINES="-DMIYOO=1"'}
           - { buildtype: 'vanilla',  repo: 'joyrider3774/znax_sdl1',        branch: 'main',         output: 'Znax',      binarycopy: 'znax',      assetscopy: 'fonts sound graphics music',            downloadsecret: '', downloadsecretcmd: '', codesecret: '', codesecretfile: '', makecommand: 'CC=/opt/miyoomini-toolchain/bin/arm-linux-gnueabihf-gcc CPP=/opt/miyoomini-toolchain/bin/arm-linux-gnueabihf-g++ SDL_CONFIG=/opt/miyoomini-toolchain/arm-linux-gnueabihf/sysroot/usr/bin/sdl-config NOX11=1 DEFINES="-DMIYOO=1"'}
           - { buildtype: 'vanilla',  repo: 'joyrider3774/rubido_funkey',    branch: 'main',         output: 'Rubido',    binarycopy: 'rubido',    assetscopy: 'rubidofs',                              downloadsecret: '', downloadsecretcmd: '', codesecret: '', codesecretfile: '', makecommand: 'TARGET=miyoo'}         
           - { buildtype: 'vanilla',  repo: 'joyrider3774/blockdude_funkey', branch: 'main',         output: 'Blockdude', binarycopy: 'blockdude', assetscopy: 'blockdudefs',                           downloadsecret: '', downloadsecretcmd: '', codesecret: '', codesecretfile: '', makecommand: 'TARGET=miyoo'}         
@@ -37,13 +37,8 @@ jobs:
           submodules: 'true'
           repository: ${{matrix.repo}}
           path: tmp
+          ref: ${{matrix.branch}}
           
-      - name: Switch game sources branch
-        run: |
-          cd tmp
-          git fetch origin
-          git checkout -b build origin/${{matrix.branch}}
-     
       - if: ${{ (matrix.codesecret != '') && (matrix.codesecretfile != '')}}
         name: Setup Secret codekey.h File
         env: 
