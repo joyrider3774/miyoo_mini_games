@@ -80,8 +80,8 @@ jobs:
       - if: ${{ matrix.assetscopy != ''}}
         name: copy assets
         run: |
-          for dir in ${{ matrix.assetscopy}}; do cp -Rf "tmp/$dir" "./artifact_dir/Roms/PORTS/Games/${{ matrix.output }}"; done 
-          for dir in imgs Shortcuts; do cp -Rf "tmp/metadata/miyoo/$dir" "./artifact_dir/Roms/PORTS"; done  cp 
+          for dir in ${{ matrix.assetscopy}}; do cp -Rf "tmp/$dir" "./artifact_dir/Roms/PORTS/Games/${{ matrix.output }}"; done
+          for dir in imgs Shortcuts; do cp -Rf "tmp/metadata/miyoo/$dir" "./artifact_dir/Roms/PORTS"; done
           cp -Rf lib "./artifact_dir/Roms/PORTS/Games/${{ matrix.output }}"
           
       - name: Store build
