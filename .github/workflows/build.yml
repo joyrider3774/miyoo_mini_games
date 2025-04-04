@@ -41,7 +41,7 @@ jobs:
       - name: Switch game sources branch
         run: |
           cd tmp
-          git checkout -b ${{matrix.branch}} origin/${{matrix.branch}}
+          git checkout -b build origin/${{matrix.branch}}
      
       - if: ${{ (matrix.codesecret != '') && (matrix.codesecretfile != '')}}
         name: Setup Secret codekey.h File
