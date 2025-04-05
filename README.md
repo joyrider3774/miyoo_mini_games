@@ -50,7 +50,7 @@ Blips is a remake of the dos bips game made by Bryant Brownell, its a sokoban st
 
 Formula 1 Game & Watch is a small, fictive formula 1 game & watch style lcd game with high score keeping. The Game was initially created over a decade ago for a small retrogame competition, after which it got ported to the gp2x. This version is based on the gp2x version but with added high score saving.
 
-[Game Info](https://joyrider3774.github.io/formula1_funkey) - [Download for miyoo (mini) onionos](https://github.com/joyrider3774/miyoo_mini_games/releases/latest/download/Formula_1.-.Miyoo_Mini_Onion_Os.zip)
+[Game Info](https://joyrider3774.github.io/formula1_funkey) - [Download for miyoo (mini) onionos](https://github.com/joyrider3774/miyoo_mini_games/releases/latest/download/Formula1.-.Miyoo_Mini_Onion_Os.zip)
 
 ---
 
