@@ -28,7 +28,7 @@ Once booted up again scan for new ports using the script in the `Roms/PORTS` fol
 Please see respective repo of each game to get more information about the games by clicking on the `Game Info` links
 
 ## Blockdude (Funkey)
-![Blockdude Screenshot 1](https://raw.githubusercontent.com/joyrider3774/blockdude_funkey/main/metadata/metadata/screenshot-miyoo.png)
+![Blockdude Screenshot 1](https://raw.githubusercontent.com/joyrider3774/blockdude_funkey/main/metadata/screenshot-miyoo.png)
 
 Blokdude is a remake of the well known TI Caluculator game from Brandon Sterner as well as the blockman game from Soleau Software. This version of the game is based on the GP2X port of blockdude i made over a decade ago.
 
@@ -37,7 +37,7 @@ Blokdude is a remake of the well known TI Caluculator game from Brandon Sterner 
 ---
 
 ## Blips
-![Blips Screenshot 1](https://raw.githubusercontent.com/joyrider3774/blips/SDL1_Version/metadata/metadata/screenshot-miyoo.png)
+![Blips Screenshot 1](https://raw.githubusercontent.com/joyrider3774/blips/SDL1_Version/metadata/screenshot-miyoo.png)
 
 Blips is a remake of the dos bips game made by Bryant Brownell, its a sokoban style puzzle game but with exploding dynamite and collecting coins
 
@@ -46,7 +46,7 @@ Blips is a remake of the dos bips game made by Bryant Brownell, its a sokoban st
 ---
 
 ## Formula 1 Game & Watch (Funkey)
-![Formula 1 Screenshot 1](https://raw.githubusercontent.com/joyrider3774/formula1_funkey/main/metadata/metadata/screenshot-miyoo.png)
+![Formula 1 Screenshot 1](https://raw.githubusercontent.com/joyrider3774/formula1_funkey/main/metadata/screenshot-miyoo.png)
 
 Formula 1 Game & Watch is a small, fictive formula 1 game & watch style lcd game with high score keeping. The Game was initially created over a decade ago for a small retrogame competition, after which it got ported to the gp2x. This version is based on the gp2x version but with added high score saving.
 
@@ -55,7 +55,7 @@ Formula 1 Game & Watch is a small, fictive formula 1 game & watch style lcd game
 ---
 
 ## Rubido (Funkey)
-![Rubido Screenshot 1](https://raw.githubusercontent.com/joyrider3774/rubido_funkey/main/metadata/metadata/screenshot-miyoo.png)
+![Rubido Screenshot 1](https://raw.githubusercontent.com/joyrider3774/rubido_funkey/main/metadata/screenshot-miyoo.png)
 
 Rubido is a little chinese checkers or solitaire game with four difficulties.
 
@@ -64,7 +64,7 @@ Rubido is a little chinese checkers or solitaire game with four difficulties.
 ---
 
 ## Sokoban (GP2X)
-![Sokoban Screenshot 1](https://raw.githubusercontent.com/joyrider3774/Sokoban/SDL1_Version/metadata/metadata/screenshot-miyoo.png)
+![Sokoban Screenshot 1](https://raw.githubusercontent.com/joyrider3774/Sokoban/SDL1_Version/metadata/screenshot-miyoo.png)
 
 Sokoban (GP2X) is a remake of the classic sokoban game. You as the player need to push boxes to specific locations in the level. Once all boxes are pushed to the correct spots the level is finished.
 
@@ -73,7 +73,7 @@ Sokoban (GP2X) is a remake of the classic sokoban game. You as the player need t
 ---
 
 ## Znax
-![Znax Screenshot 1](https://raw.githubusercontent.com/joyrider3774/znax_sdl1/main/metadata/metadata/screenshot-miyoo.png)
+![Znax Screenshot 1](https://raw.githubusercontent.com/joyrider3774/znax_sdl1/main/metadata/screenshot-miyoo.png)
 
 Znax is a cross platform puzzle / arcade game using SDL1 libraries. You select 4 of the same colored pieces forming a rectangle to gain scores and remove the pieces inside the rectangle!
 
