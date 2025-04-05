@@ -4,7 +4,7 @@
 Builds of my games running on Trimui Brick
 
 ## Installing
-In general on the miyoo (mini) onionoss, make sure you have the ports "emulator" installed then
+In general on the miyoo (mini) onion os, make sure you have the ports "emulator" installed then
 extract the zips you download from the [Release Section](https://github.com/joyrider3774/miyoo_mini_games/releases) in the root of your sdcard.
 Once booted up again scan for new ports using the script in the `Roms/PORTS` folder
 
@@ -13,8 +13,8 @@ Once booted up again scan for new ports using the script in the `Roms/PORTS` fol
 | Key | Action |
 | ------ | ------ |
 | Dpad or Joystick | movement, selecting in menu's etc |
-| A | A Button as mentioned in the games for functionality of each game please check each game's repository |
-| B | B Button as mentioned in the games for functionality of each game please check each game's repository |
+| A | In some games main action, selection in menus otherwise A Button as mentioned in the games for functionality of each game please check each game's repository |
+| B | In some games return to titlescreen otherwise B Button as mentioned in the games for functionality of each game please check each game's repository |
 | X | X Button as mentioned in the games for functionality of each game please check each game's repository |
 | Y | Y Button as mentioned in the games for functionality of each game please check each game's repository |
 | L1 | In my games usually used in the level editors to select previous piece. In other games consult game's repository to know the functionality |
