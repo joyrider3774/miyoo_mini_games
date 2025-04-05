@@ -1,7 +1,7 @@
 # My Miyoo (Mini) Onion Os Games
 ![DownloadCountTotal](https://img.shields.io/github/downloads/joyrider3774/miyoo_mini_games/total?label=total%20downloads&style=plastic) ![DownloadCountLatest](https://img.shields.io/github/downloads/joyrider3774/miyoo_mini_games/latest/total?style=plastic) ![LatestVersion](https://img.shields.io/github/v/tag/joyrider3774/miyoo_mini_games?label=Latest%20version&style=plastic) ![License](https://img.shields.io/github/license/joyrider3774/miyoo_mini_games?style=plastic)
 
-Builds of my games running on Trimui Brick
+Builds of my games running on Miyoo (Mini) Onion Os
 
 ## Installing
 In general on the miyoo (mini) onion os, make sure you have the ports "emulator" installed then
